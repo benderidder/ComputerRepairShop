@@ -1,0 +1,31 @@
+﻿using ComputerRepairShop.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ComputerRepairShop.Repository
+{
+    public static class DbInitializer
+    {
+        public static void Initialize(ApplicationDbContext context)
+        {
+            context.Database.EnsureCreated();
+
+            if(context.Devices.Any())
+            {
+                return;
+            }
+
+            var Devices = new Device[]
+            {
+                new Device() { Name = "Laptop 1" }
+            };
+
+            context.Devices.AddRange(Devices);
+
+            context.SaveChanges();
+        }
+    }
+}
