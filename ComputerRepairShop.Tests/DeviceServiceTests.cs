@@ -8,18 +8,34 @@ namespace ComputerRepairShop.Tests
     public class DeviceServiceTests
     {
         private IServiceProvider _serviceProvider;
+        private IDeviceService _deviceService;
 
         public DeviceServiceTests()
         {
             _serviceProvider = TestHelper.Setup();
+            _deviceService = _serviceProvider.GetRequiredService<IDeviceService>();
         }
 
         [TestMethod]
-        public void TestSaveNew()
+        public void TestRetrieveAll()
         {
-            IDeviceService service = _serviceProvider.GetRequiredService<IDeviceService>();
+            var devices = _deviceService.GetDevices();
+            Assert.IsNotNull(devices);
+        }
 
-            service.InsertDevice(new Device() { Name = $"IDeviceService: {DateTime.Now}" });
+        [TestMethod]
+        public void TestInsertNew()
+        {
+            _deviceService.InsertDevice(new Device() { Name = $"IDeviceService: {DateTime.Now}" });
+        }
+
+        [TestMethod]
+        public void TestUpdateExisting()
+        {
+            var device = _deviceService.GetDevices().FirstOrDefault();
+            Assert.IsNotNull(device);
+            device.Name = $"IDeviceService updated: {DateTime.Now}";
+            _deviceService.UpdateDevice(device);
         }
     }
 }

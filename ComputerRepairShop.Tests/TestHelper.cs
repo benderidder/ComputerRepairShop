@@ -9,6 +9,8 @@ namespace ComputerRepairShop.Tests
         internal static IServiceProvider Setup()
         {
             var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .Build();
 
             var services = new ServiceCollection()

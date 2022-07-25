@@ -11,7 +11,7 @@ namespace ComputerRepairShop.Tests
     {
         public static IServiceCollection AddServicesForTest(this IServiceCollection services, IConfiguration configuration)
         {
-            var connString = "Server=(localdb)\\mssqllocaldb;Database=ComputerRepairStore;Trusted_Connection=True;MultipleActiveResultSets=true";
+            var connString = configuration.GetConnectionString("DefaultConnection");
 
             services
                 .AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connString, opt => opt.EnableRetryOnFailure()), ServiceLifetime.Transient)
