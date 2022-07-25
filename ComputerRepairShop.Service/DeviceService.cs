@@ -5,7 +5,7 @@ namespace ComputerRepairShop.Service
 {
     public class DeviceService : IDeviceService
     {
-        private IRepository<Device> _deviceRepository;
+        private readonly IRepository<Device> _deviceRepository;
 
         public DeviceService(IRepository<Device> deviceRepository)
         {
