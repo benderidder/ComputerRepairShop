@@ -13,6 +13,7 @@ namespace ComputerRepairShop.Repository
             this.context = context;
             entities = context.Set<T>();
         }
+
         public IEnumerable<T> GetAll()
         {
             return entities.AsEnumerable();
@@ -22,6 +23,7 @@ namespace ComputerRepairShop.Repository
         {
             return entities.SingleOrDefault(s => s.Id == id);
         }
+
         public void Insert(T entity)
         {
             if (entity == null)
