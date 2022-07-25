@@ -1,6 +1,5 @@
 using ComputerRepairShop.Domain;
 using ComputerRepairShop.Repository;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ComputerRepairShop.Tests
