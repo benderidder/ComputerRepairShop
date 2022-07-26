@@ -12,7 +12,7 @@ namespace ComputerRepairShop.Tests
 
         public DeviceServiceTests()
         {
-            _serviceProvider = TestHelper.Setup();
+            _serviceProvider = TestInitializer.Init();
             _deviceService = _serviceProvider.GetRequiredService<IDeviceService>();
         }
 

@@ -11,7 +11,7 @@ namespace ComputerRepairShop.Tests
 
         public DeviceRepositoryTests()
         {
-            _serviceProvider = TestHelper.Setup();
+            _serviceProvider = TestInitializer.Init();
         }
 
         [TestMethod]

@@ -4,9 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ComputerRepairShop.Tests
 {
-    internal class TestHelper
+    internal class TestInitializer
     {
-        internal static IServiceProvider Setup()
+        internal static IServiceProvider Init()
         {
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
