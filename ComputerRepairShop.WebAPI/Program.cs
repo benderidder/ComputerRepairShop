@@ -1,6 +1,7 @@
 using ComputerRepairShop.Domain;
 using ComputerRepairShop.Repository;
 using ComputerRepairShop.Service;
+using ComputerRepairShop.WebAPI.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 // Get application configuration
@@ -22,7 +23,7 @@ builder.Services.AddSwaggerGen();
 
 // Add application services
 builder.Services
-    .AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
+    .AddDbContext<ShopDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
     .AddScoped<IRepository<Device>, Repository<Device>>()
     .AddScoped<IDeviceService, DeviceService>();
 //
@@ -38,11 +39,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.PrepareDatabase();
 
 app.Run();

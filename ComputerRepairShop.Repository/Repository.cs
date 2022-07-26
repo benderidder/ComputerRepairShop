@@ -5,10 +5,10 @@ namespace ComputerRepairShop.Repository
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly ApplicationDbContext context;
+        private readonly ShopDbContext context;
         private readonly DbSet<T> entities;
 
-        public Repository(ApplicationDbContext context)
+        public Repository(ShopDbContext context)
         {
             this.context = context;
             entities = context.Set<T>();

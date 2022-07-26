@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ComputerRepairShop.Repository
 {
-    public class ApplicationDbContext : DbContext 
+    public class ShopDbContext : DbContext 
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        public ShopDbContext(DbContextOptions<ShopDbContext> options) : base(options)
         {
         }
 

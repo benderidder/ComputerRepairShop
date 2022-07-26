@@ -18,8 +18,8 @@ namespace ComputerRepairShop.Tests
 
             IServiceProvider serviceProvider = services.BuildServiceProvider();
 
-            var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
-            DbInitializer.Initialize(context);
+            var context = serviceProvider.GetRequiredService<ShopDbContext>();
+            ShopDbInitializer.Initialize(context);
 
             return serviceProvider;
         }

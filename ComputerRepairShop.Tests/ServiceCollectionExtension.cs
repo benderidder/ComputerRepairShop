@@ -14,7 +14,7 @@ namespace ComputerRepairShop.Tests
             var connString = configuration.GetConnectionString("DefaultConnection");
 
             services
-                .AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connString, opt => opt.EnableRetryOnFailure()), ServiceLifetime.Transient)
+                .AddDbContext<ShopDbContext>(options => options.UseSqlServer(connString, opt => opt.EnableRetryOnFailure()), ServiceLifetime.Transient)
                 .AddScoped<IRepository<Device>, Repository<Device>>()
                 .AddScoped<IDeviceService, DeviceService>();
 
