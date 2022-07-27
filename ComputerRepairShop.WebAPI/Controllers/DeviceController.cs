@@ -17,8 +17,8 @@ namespace ComputerRepairShop.WebAPI.Controllers
             _deviceService = deviceService;
         }
 
-        [HttpGet("", Name = "GetDevices")]
-        public IEnumerable<Device> GetAll()
+        [HttpGet(Name = "GetDevices")]
+        public IEnumerable<Device> Get()
         {
             IEnumerable<Device> devices = _deviceService.GetDevices();
 

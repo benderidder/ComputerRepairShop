@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerRepairShop.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerRepairShop.Service", "ComputerRepairShop.Service\ComputerRepairShop.Service.csproj", "{77CB4A64-5BFB-4D11-BC5B-F954B5F2AAD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerRepairShop.WebAPI", "ComputerRepairShop.WebAPI\ComputerRepairShop.WebAPI.csproj", "{6413735D-6139-4145-85F8-628D466FE75F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputerRepairShop.WebAPI", "ComputerRepairShop.WebAPI\ComputerRepairShop.WebAPI.csproj", "{6413735D-6139-4145-85F8-628D466FE75F}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ComputerRepairShop.AngularClient", "ComputerRepairShop.AngularClient\ComputerRepairShop.AngularClient.esproj", "{156F76F2-48DB-4B3E-8764-1169C8412287}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{6413735D-6139-4145-85F8-628D466FE75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6413735D-6139-4145-85F8-628D466FE75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6413735D-6139-4145-85F8-628D466FE75F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156F76F2-48DB-4B3E-8764-1169C8412287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{156F76F2-48DB-4B3E-8764-1169C8412287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{156F76F2-48DB-4B3E-8764-1169C8412287}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{156F76F2-48DB-4B3E-8764-1169C8412287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{156F76F2-48DB-4B3E-8764-1169C8412287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{156F76F2-48DB-4B3E-8764-1169C8412287}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
