@@ -2,6 +2,7 @@ using ComputerRepairShop.Domain;
 using ComputerRepairShop.Repository;
 using ComputerRepairShop.Service;
 using ComputerRepairShop.WebAPI.Extensions;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 
 // Get application configuration
@@ -31,6 +32,10 @@ builder.Services
 //
 
 var app = builder.Build();
+
+// It should be one of your very first registrations
+app.UseExceptionHandler("/error"); // Add this
+//app.UseEndpoints(endpoints => endpoints.MapControllers());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

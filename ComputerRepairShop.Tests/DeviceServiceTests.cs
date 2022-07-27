@@ -30,6 +30,12 @@ namespace ComputerRepairShop.Tests
         }
 
         [TestMethod]
+        public void TestGet_DoesNotExist()
+        {
+            Assert.ThrowsException<ArgumentException>(() => _deviceService.GetDevice(-1));
+        }
+
+        [TestMethod]
         public void TestUpdateExisting()
         {
             var device = _deviceService.GetDevices().FirstOrDefault();

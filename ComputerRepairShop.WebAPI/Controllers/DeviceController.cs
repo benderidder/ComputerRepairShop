@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ComputerRepairShop.WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("devices")]
     public class DeviceController : ControllerBase
     {
         private readonly ILogger<DeviceController> _logger;
@@ -34,6 +34,13 @@ namespace ComputerRepairShop.WebAPI.Controllers
             {
                 device = devices.ToList()[0];
             }
+            return device;
+        }
+
+        [HttpGet("{id}", Name = "GetById")]
+        public Device GetById(long id)
+        {
+            var device = _deviceService.GetDevice(id);
             return device;
         }
     }

@@ -17,9 +17,17 @@ namespace ComputerRepairShop.Service
             return _deviceRepository.GetAll();
         }
 
-        public Device? GetDevice(long id)
+        public Device GetDevice(long id)
         {
-            return _deviceRepository.Get(id);
+            var device = _deviceRepository.Get(id);
+            if(device != null)
+            {
+                return device;
+            }
+            else
+            {
+                throw new ArgumentException($"No device found for id {id}");
+            }
         }
 
         public void InsertDevice(Device device)

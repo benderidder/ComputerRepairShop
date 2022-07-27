@@ -1,4 +1,4 @@
-namespace ComputerRepairShop.WebAPI
+namespace ComputerRepairShop.WebAPI.Classes
 {
     public class WeatherForecast
     {

@@ -1,3 +1,4 @@
+using ComputerRepairShop.WebAPI.Classes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ComputerRepairShop.WebAPI.Controllers
