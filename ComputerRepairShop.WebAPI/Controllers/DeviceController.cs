@@ -20,28 +20,13 @@ namespace ComputerRepairShop.WebAPI.Controllers
         [HttpGet(Name = "GetDevices")]
         public IEnumerable<Device> Get()
         {
-            IEnumerable<Device> devices = _deviceService.GetAllDevices();
-
-            return devices;
-        }
-
-        [HttpGet("first", Name = "GetFirstDevice")]
-        public Device GetFirst()
-        {
-            IEnumerable<Device> devices = _deviceService.GetAllDevices();
-            Device device = new Device();
-            if(devices.Any())
-            {
-                device = devices.ToList()[0];
-            }
-            return device;
+            return _deviceService.GetAllDevices();
         }
 
         [HttpGet("{id}", Name = "GetDeviceById")]
         public Device GetById(long id)
         {
-            var device = _deviceService.GetDevice(id);
-            return device;
+            return _deviceService.GetDevice(id);
         }
 
         [HttpPost(Name = "PostDevice")]
