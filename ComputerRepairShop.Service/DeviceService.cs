@@ -1,14 +1,17 @@
 ﻿using ComputerRepairShop.Domain;
 using ComputerRepairShop.Repository;
+using Microsoft.Extensions.Logging;
 
 namespace ComputerRepairShop.Service
 {
     public class DeviceService : IDeviceService
     {
+        private readonly ILogger<DeviceService> _logger;
         private readonly IRepository<Device> _deviceRepository;
 
-        public DeviceService(IRepository<Device> deviceRepository)
+        public DeviceService(ILogger<DeviceService> logger, IRepository<Device> deviceRepository)
         {
+            _logger = logger;
             _deviceRepository = deviceRepository;
         }
 
@@ -19,15 +22,23 @@ namespace ComputerRepairShop.Service
 
         public Device GetDevice(long id)
         {
-            var device = _deviceRepository.Get(id);
+            try
+            {
+                var device = _deviceRepository.Get(id);
 
-            if(device != null)
+                if (device != null)
+                {
+                    return device;
+                }
+                else
+                {
+                    throw new ArgumentException($"No device found for id {id}");
+                }
+            } 
+            catch(Exception ex)
             {
-                return device;
-            }
-            else
-            {
-                throw new ArgumentException($"No device found for id {id}");
+                _logger.LogError("GetDevice failed: {message}", ex.Message);
+                throw;
             }
         }
 

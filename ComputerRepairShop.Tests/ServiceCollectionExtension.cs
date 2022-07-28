@@ -16,7 +16,8 @@ namespace ComputerRepairShop.Tests
             services
                 .AddDbContext<ShopDbContext>(options => options.UseSqlServer(connString, opt => opt.EnableRetryOnFailure()), ServiceLifetime.Transient)
                 .AddScoped<IRepository<Device>, Repository<Device>>()
-                .AddScoped<IDeviceService, DeviceService>();
+                .AddScoped<IDeviceService, DeviceService>()
+                .AddLogging();
 
             return services;
         }

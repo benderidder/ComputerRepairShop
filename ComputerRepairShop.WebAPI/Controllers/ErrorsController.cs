@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace ComputerRepairShop.WebAPI.Controllers
 {
@@ -9,20 +10,25 @@ namespace ComputerRepairShop.WebAPI.Controllers
     [ApiExplorerSettings(IgnoreApi = true)]
     public class ErrorsController : ControllerBase
     {
+        private readonly ILogger<ErrorsController> _logger;
+
+        public ErrorsController(ILogger<ErrorsController> logger)
+        {
+            _logger = logger;
+        }
+
         [Route("error")]
         public MyErrorResponse Error()
         {
             var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
-            var exception = context?.Error; // Your exception
-            var code = 500; // Internal Server Error by default
-
-            //if (exception is MyNotFoundException) code = 404; // Not Found
-            //else if (exception is MyUnauthException) code = 401; // Unauthorized
-            //else if (exception is MyException) code = 400; // Bad Request
+            var exception = context?.Error;
+            var code = (int)HttpStatusCode.InternalServerError;
 
             if (exception is ArgumentException) code = 400;
 
-            Response.StatusCode = code; // You can use HttpStatusCode enum instead
+            Response.StatusCode = (int)HttpStatusCode.BadRequest;
+
+            _logger.LogError("Response, status code: {code}, message: '{message}'", code, exception?.Message ?? "no message");
 
             return new MyErrorResponse(exception ?? new Exception("Unhandled exception")); // Your error model
         }

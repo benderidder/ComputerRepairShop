@@ -1,27 +1,30 @@
 ﻿using ComputerRepairShop.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace ComputerRepairShop.Repository
 {
     public class Repository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly ShopDbContext context;
-        private readonly DbSet<T> entities;
+        private readonly ILogger<Repository<T>> _logger;
+        private readonly ShopDbContext _context;
+        private readonly DbSet<T> _entities;
 
-        public Repository(ShopDbContext context)
+        public Repository(ILogger<Repository<T>> logger, ShopDbContext context)
         {
-            this.context = context;
-            entities = context.Set<T>();
+            _logger = logger;
+            _context = context;
+            _entities = context.Set<T>();
         }
 
         public IEnumerable<T> GetAll()
         {
-            return entities.AsEnumerable();
+            return _entities.AsEnumerable();
         }
 
         public T? Get(long id)
         {
-            return entities.SingleOrDefault(s => s.Id == id);
+            return _entities.SingleOrDefault(s => s.Id == id);
         }
 
         public void Insert(T entity)
@@ -30,8 +33,8 @@ namespace ComputerRepairShop.Repository
             {
                 throw new ArgumentNullException("entity");
             }
-            entities.Add(entity);
-            context.SaveChanges();
+            _entities.Add(entity);
+            _context.SaveChanges();
         }
 
         public void Update(T entity)
@@ -40,8 +43,8 @@ namespace ComputerRepairShop.Repository
             {
                 throw new ArgumentNullException("entity");
             }
-            context.Update(entity);            
-            context.SaveChanges();
+            _context.Update(entity);            
+            _context.SaveChanges();
         }
 
         public void Delete(T entity)
@@ -50,8 +53,8 @@ namespace ComputerRepairShop.Repository
             {
                 throw new ArgumentNullException("entity");
             }
-            entities.Remove(entity);
-            context.SaveChanges();
+            _entities.Remove(entity);
+            _context.SaveChanges();
         }
     }
 }
