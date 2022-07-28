@@ -19,14 +19,17 @@ namespace ComputerRepairShop.Tests
         [TestMethod]
         public void TestRetrieveAll()
         {
-            var devices = _deviceService.GetDevices();
+            // arange and act
+            var devices = _deviceService.GetAllDevices();
+            
+            // assert
             Assert.IsNotNull(devices);
         }
 
         [TestMethod]
         public void TestInsertNew()
         {
-            _deviceService.InsertDevice(new Device() { Name = $"IDeviceService: {DateTime.Now}" });
+            _deviceService.SaveDevice(new Device() { Name = $"Test: {DateTime.Now}" });
         }
 
         [TestMethod]
@@ -38,10 +41,12 @@ namespace ComputerRepairShop.Tests
         [TestMethod]
         public void TestUpdateExisting()
         {
-            var device = _deviceService.GetDevices().FirstOrDefault();
-            Assert.IsNotNull(device);
-            device.Name = $"IDeviceService updated: {DateTime.Now}";
-            _deviceService.UpdateDevice(device);
+            // arange
+            var device = _deviceService.GetAllDevices().FirstOrDefault(new Device() { Name = $"Test: {DateTime.Now}" });
+            device.Name = $"Test updated: {DateTime.Now}";
+
+            // act
+            _deviceService.SaveDevice(device);
         }
     }
 }

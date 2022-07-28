@@ -12,7 +12,7 @@ namespace ComputerRepairShop.Service
             _deviceRepository = deviceRepository;
         }
 
-        public IEnumerable<Device> GetDevices()
+        public IEnumerable<Device> GetAllDevices()
         {
             return _deviceRepository.GetAll();
         }
@@ -20,6 +20,7 @@ namespace ComputerRepairShop.Service
         public Device GetDevice(long id)
         {
             var device = _deviceRepository.Get(id);
+
             if(device != null)
             {
                 return device;
@@ -30,18 +31,24 @@ namespace ComputerRepairShop.Service
             }
         }
 
-        public void InsertDevice(Device device)
+        public void SaveDevice(Device device)
         {
-            _deviceRepository.Insert(device);
-        }
+            if (device == null) throw new ArgumentException($"No device was provided to save");
 
-        public void UpdateDevice(Device device)
-        {
-            _deviceRepository.Update(device);
+            if (device.Id == 0)
+            {
+                _deviceRepository.Insert(device);
+            }
+            else
+            {
+                _deviceRepository.Update(device);
+            }
         }
 
         public void DeleteDevice(Device device)
         {
+            if (device == null) throw new ArgumentException($"No device was provided to delete");
+
             _deviceRepository.Delete(device);
         }
     }

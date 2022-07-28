@@ -20,7 +20,7 @@ namespace ComputerRepairShop.WebAPI.Controllers
         [HttpGet(Name = "GetDevices")]
         public IEnumerable<Device> Get()
         {
-            IEnumerable<Device> devices = _deviceService.GetDevices();
+            IEnumerable<Device> devices = _deviceService.GetAllDevices();
 
             return devices;
         }
@@ -28,7 +28,7 @@ namespace ComputerRepairShop.WebAPI.Controllers
         [HttpGet("first", Name = "GetFirstDevice")]
         public Device GetFirst()
         {
-            IEnumerable<Device> devices = _deviceService.GetDevices();
+            IEnumerable<Device> devices = _deviceService.GetAllDevices();
             Device device = new Device();
             if(devices.Any())
             {
@@ -37,11 +37,17 @@ namespace ComputerRepairShop.WebAPI.Controllers
             return device;
         }
 
-        [HttpGet("{id}", Name = "GetById")]
+        [HttpGet("{id}", Name = "GetDeviceById")]
         public Device GetById(long id)
         {
             var device = _deviceService.GetDevice(id);
             return device;
+        }
+
+        [HttpPost(Name = "PostDevice")]
+        public void Post(Device device)
+        {
+            _deviceService.SaveDevice(device);
         }
     }
 }

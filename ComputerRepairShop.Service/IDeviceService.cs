@@ -4,10 +4,9 @@ namespace ComputerRepairShop.Service
 {
     public interface IDeviceService
     {
-        IEnumerable<Device> GetDevices();
+        IEnumerable<Device> GetAllDevices();
         Device GetDevice(long id);
-        void InsertDevice(Device device);
-        void UpdateDevice(Device device);
+        void SaveDevice(Device device);
         void DeleteDevice(Device device);
     }
 }
