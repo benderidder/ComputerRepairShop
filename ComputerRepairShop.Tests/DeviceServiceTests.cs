@@ -33,7 +33,7 @@ namespace ComputerRepairShop.Tests
         }
 
         [TestMethod]
-        public void TestGet_DoesNotExist()
+        public void TestGetNotExisting()
         {
             Assert.ThrowsException<ArgumentException>(() => _deviceService.GetDevice(-1));
         }
@@ -47,6 +47,16 @@ namespace ComputerRepairShop.Tests
 
             // act
             _deviceService.SaveDevice(device);
+        }
+
+        [TestMethod]
+        public void TestDeleteExisting()
+        {
+            // arange 
+            var device = _deviceService.GetAllDevices().FirstOrDefault(new Device() { Name = $"Test: {DateTime.Now}" });
+    
+            // act
+            _deviceService.DeleteDevice(device);
         }
     }
 }

@@ -49,5 +49,11 @@ namespace ComputerRepairShop.WebAPI.Controllers
         {
             _deviceService.SaveDevice(device);
         }
+
+        [HttpDelete(Name = "DeleteDevice")]
+        public void Delete(long id)
+        {
+            _deviceService.DeleteDevice(GetById(id));
+        }
     }
 }
