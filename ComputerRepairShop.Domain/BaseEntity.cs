@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ComputerRepairShop.Domain
 {
-    public class BaseEntity
+    public class BaseEntity : ITrackableEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
