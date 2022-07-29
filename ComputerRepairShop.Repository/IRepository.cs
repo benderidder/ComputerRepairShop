@@ -2,7 +2,7 @@
 
 namespace ComputerRepairShop.Repository
 {
-    public interface IRepository<T> where T : BaseEntity
+    public interface IRepository<T> where T : EntityBase
     {
         IEnumerable<T> GetAll();
         T? Get(long id);

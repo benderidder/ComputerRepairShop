@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ComputerRepairShop.Repository
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity
+    public class Repository<T> : IRepository<T> where T : EntityBase
     {
         private readonly ILogger<Repository<T>> _logger;
         private readonly ShopDbContext _context;

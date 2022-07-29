@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ComputerRepairShop.Domain
 {
-    public class Device : BaseEntity
+    public class Device : EntityBase
     {
         public string SerialNumber { get; set; } = string.Empty;
     }
